@@ -1,10 +1,18 @@
 
 const money = 150;
 const income = 'Создание сайтов';
-const addExpenses = 'такси, бензин, маски';
+const addExpenses = 'Такси, Бензин, Маски';
 const deposit = false;
-const mission = 2;
+const mission = 20000000;
+const period = 6;
 
-alert('Hello my first homework');
+console.log(typeof money);
+console.log(typeof income);
+console.log(typeof deposit);
+console.log(addExpenses.length);
+console.log(`Период равен ${period} месяцев и Цель заработать ${mission} рублей`);
+console.log(addExpenses.toLowerCase(), addExpenses.split(', '));
 
-console.log('Это первая легка домашка');
+let budgetDay = (500000 / 30);
+
+console.log(budgetDay);

@@ -1,10 +1,10 @@
 'use strict';
 
-let money = 150;
+let money = +prompt('Ваш месячный доход?', 100000);
 let income = 'Создание сайтов';
 let addExpenses = 'Такси, Бензин, Маски';
 let deposit = false;
-let mission = 20000000;
+let mission = +prompt('Ваша цель?',20000000);
 let period = 6;
 
 console.log(typeof money);
@@ -19,7 +19,6 @@ let budgetDay = (500000 / 30);
 
 console.log(budgetDay);
 
-money = prompt('Ваш месячный доход');
 addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
 deposit = confirm('Есть ли у вас депозит в банке?');
 

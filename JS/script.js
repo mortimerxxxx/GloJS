@@ -5,7 +5,7 @@ let income = 'Создание сайтов';
 let addExpenses = 'Такси, Бензин, Маски';
 let deposit = false;
 let mission = +prompt('Ваша цель?',20000000);
-let period = 6;
+let period = +prompt('За сколько месяцев Вы хотите достигнуть своей цели?', 6);
 
 console.log(typeof money);
 console.log(typeof income);

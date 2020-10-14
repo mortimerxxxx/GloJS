@@ -1,11 +1,26 @@
 'use strict';
 
-let money = +prompt('Ваш месячный доход?', 100000);
+let isNumber = function(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+};
+
+
+let money;
 let income = 'Создание сайтов';
 let addExpenses = 'Такси, Бензин, Маски';
 let deposit = false;
 let mission = +prompt('Ваша цель?',20000000);
 let period = +prompt('За сколько месяцев Вы хотите достигнуть своей цели?', 6);
+
+let start = function() {
+// задание 1
+    do {
+        money = prompt('Ваш месячный доход?');
+    }
+    while (!isNumber(money));
+};
+
+start();
 
 let showTypeOf = function(data) {
     console.log(typeof(data));
@@ -23,44 +38,57 @@ console.log(budgetDay);
 addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
 deposit = confirm('Есть ли у вас депозит в банке?');
 
-let expenses1 = prompt('Введите обязательную статью расходов?');
-let amount1 = +prompt('Во сколько это обойдется?');
-let expenses2 = prompt('Введите обязательную статью расходов?');
-let amount2 = +prompt('Во сколько это обойдется?');
-// let budgetMonth = (amount1 + amount2);
-
-
 console.log(addExpenses);
 
-// 1 чать
-function getExpensesMonth(a, b) {
-    const sum = a + b;
-    return sum;
-}
-getExpensesMonth(amount1, amount2);
-console.log(getExpensesMonth(amount1, amount2));
+let expenses = [];
 
-// 2 часть
-function getAccumulatedMonth(a, b) {
-    return a - b;
-}
-getAccumulatedMonth(money, (amount1, amount2));
+console.log(addExpenses.toLowerCase().split(','));
 
-// 3 часть
-let accumulatedMonth = getAccumulatedMonth(money, (amount1, amount2));
+let getExpensesMonth = function() {
+let sum = 0;
 
-// 4 часть
-function getTargetMonth(a, b) {
-    return a / b;
-}
-getTargetMonth(mission, accumulatedMonth);
-console.log(getTargetMonth(mission, accumulatedMonth));
-// 5 часть - уделена переменная budgetMonth
-// 6 часть
+    for (let i = 0; i < 2; i++) {
+        
+        expenses[i] = prompt('Введите обязательную статью расходов?');
+
+        do {
+            sum = prompt('Во сколько это обойдется?');
+        }
+        while (!isNumber(sum));
+        // sum += +prompt('Во сколько это обойдется?');
+    }
+
+    console.log(expenses);
+    return sum; 
+};
+
+let expensesAmount = getExpensesMonth();
+
+console.log(expensesAmount);
+
+let getAccumulatedMonth = function(a, b) {
+    return money - expensesAmount;
+};
+
+let accumulatedMonth = getAccumulatedMonth();
+
+let getTargetMonth = function() {
+
+    return mission / accumulatedMonth;
+};
+let getTargetMonthIncome = function() {
+    if (getTargetMonth() < 0) {
+        return('Цель не будет достигнута');
+    } else {
+        return('Цель будет достигнута');
+    }
+};
+
+console.log(getTargetMonthIncome());
+
 budgetDay = Math.floor(accumulatedMonth / 30);
 console.log(budgetDay);
 
-// 7 часть
 let getStatusIncome = function() {
     if (budgetDay > 1200) {
         return('У вас высокий уровень дохода');
@@ -72,6 +100,5 @@ let getStatusIncome = function() {
         return('Что то пошло не так');
     }
 };
-getStatusIncome();
 
 console.log(getStatusIncome());

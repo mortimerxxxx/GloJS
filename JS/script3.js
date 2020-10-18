@@ -56,8 +56,9 @@ let money,
         },
 
         getTargetMonth: function() {
-            return Math.ceil(appData.mission / appData.getBudgetMonth);
+            return Math.ceil(appData.mission / appData.getExpensesMonth());
         },
+        
         getStatusIncome: function(){
             if(appData.budgetDay > 1200){
                 return('У вас высокий уровень дохода');
@@ -72,13 +73,11 @@ let money,
 };
 
     appData.asking();
-
-    console.log('Расходы за месяц ' + appData.getTargetMonth());
     
     appData.getBudget();
 
     if(appData.getTargetMonth() >= 0) {
-        console.log('Цель будет достигнута за ' + appData.getTargetMonth + 'месяца');
+        console.log('Цель будет достигнута за ' + appData.getTargetMonth() + 'месяца');
     } else {
         console.log('Цель не будет достигнута');
     }

@@ -184,6 +184,15 @@ incomePlus.addEventListener('click', appData.addIncomeBlock);
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 
 
+start.setAttribute('disabled', '0');
+
+salaryAmount.addEventListener('input', () => {
+    if(salaryAmount.value !== ''){
+        start.removeAttribute('disabled');
+    }else {
+        start.setAttribute('disabled', '0');}
+});
+
 // for (let key in appData) {
 //     console.log('Наша программа включает в себя данные: ' + key + ': ' + appData[key]);
 // }

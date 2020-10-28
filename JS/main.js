@@ -60,18 +60,29 @@ AppData.prototype.start = function () {
 
     cancel.addEventListener('click', function () {
 
-        document.querySelectorAll('.data input[type=text]').forEach(function (item) {
+        document.querySelectorAll('.data input[type = text]').forEach(function(item){
             item.disabled = false;
             item.value = '';
+            periodSelect.value = '0';
+            periodAmount.innerHTML = periodSelect.value;
         });
 
-        document.querySelectorAll('.result input[type=text]').forEach(function (item) {
+        document.querySelectorAll('.result input[type = text]').forEach(function(item) {
             item.disabled = false;
             item.value = '';
         });
 
         start.style.display = 'block';
         cancel.style.display = 'none';
+
+        for (let i = 1; i < incomeItems.length; i++) {
+            incomeItems[i].remove();
+            incomePlus.style.display = 'block';
+        }
+        for (let i = 1; i < expensesItems.length; i++) {
+            expensesItems[i].remove();
+            expensesPlus.style.display = 'block';
+        }
 
         start.disabled = true;
         salaryAmount.addEventListener('input', () => {

@@ -102,7 +102,7 @@ class AppData {
         depositeCalc.style.display = 'none';
 
         depositCheck.checked = false;
-
+        depositeBank.value = '';
         start.disabled = true;
         salaryAmount.addEventListener('input', () => {
             start.disabled = salaryAmount.value.trim() === '';
@@ -259,12 +259,20 @@ class AppData {
             depositeBank.removeEventListener('change', this.changePercent);
         }
     }
+    showDepositeCalc() {
+        if(depositeBank.value === 'other'){
+            depositeCalc.style.display = 'inline-block';
+        }
+    }
 
 
     eventsListeners () {
     
         start.addEventListener('click', this.start.bind(this));
 
+        depositeBank.addEventListener('change', function(){
+            depositeCalc.style.display = 'block';
+        });
 
         cancel.addEventListener("click", AppData.prototype.reset.bind(this));
     
@@ -289,6 +297,7 @@ class AppData {
             if(depositePercent.value < 0 || depositePercent.value > 100){
                 start.disabled = true;
                 alert("Вы ввели некорректное значение");
+                depositePercent.value = '';
             }else if(depositPercent.value !== ''){
                 start.disabled = false;
             }

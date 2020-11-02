@@ -53,5 +53,5 @@ window.addEventListener('DOMContentLoaded', function() {
         console.log(updateClock());
     }
 
-    setInterval(countTimer, 1000, '2 november 2020');
+    setInterval(countTimer, 1000, '6 november 2020');
 });

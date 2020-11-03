@@ -26,10 +26,8 @@ window.addEventListener('DOMContentLoaded', function () {
         и переменную дней разделить на чекунды, минуты и на 24 часа
 
         day = Math.floor(timeRemaining / 60 / 60 / 24); */
-
         let updateClock = function () {
-            let timer = getTimeRemaining(),
-                idInterval;
+            let timer = getTimeRemaining();
 
             function zero(n) {
                 if (n < 10) {
@@ -40,20 +38,17 @@ window.addEventListener('DOMContentLoaded', function () {
             }
 
             if (timer.timeRemaining > 0) {
-                idInterval = setInterval(updateClock, 1000);
                 timerHours.textContent = zero(timer.hours);
                 timerMinutes.textContent = zero(timer.minutes);
                 timerSeconds.textContent = zero(timer.seconds);
-            } else if (timer.timeRemaining <= 0) {
-                clearInterval(idInterval);
+            } else if (timer.timeRemaining < 0) {
+                clearInterval(updateClock, 1000);
                 timerHours.textContent = '00';
                 timerMinutes.textContent = '00';
                 timerSeconds.textContent = '00';
             }
-
         };
-        console.log(updateClock());
-
+        setInterval(updateClock, 1000);
     }
     countTimer("5 november 2020");
 });

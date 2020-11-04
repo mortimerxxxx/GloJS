@@ -95,6 +95,7 @@
                             popup.style.display = 'block';
                         }else{
                             popup.style.display = 'block';
+                            popupContent.style.opacity = "1";
                         }
                     });
                 });

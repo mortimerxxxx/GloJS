@@ -79,42 +79,43 @@ window.addEventListener('DOMContentLoaded', function () {
                     popupCloseBtn = document.querySelector('.popup-close');
                 let popupContent = document.querySelector('.popup-content');
 
-                popupBtn.forEach((elem) => {
+                  popupBtn.forEach((elem) => {
                     elem.addEventListener('click', () => {
-                        if(window.innerWidth < 768){
-                            popup.style.display = 'block';
-                        }else{
-                            popup.style.display = 'block';
-                            popupContent.style.left = "-1%";
-                            let n = -1;
+                        if(window.innerWidth > 768){
+                            popupContent.style.opacity = "0";
+                            let n = 0;
                             const timer = setInterval(() => {
-                                n++;
-                                popupContent.style.left = `${n}%`;
+                                n+=0.1;
+                                popupContent.style.opacity = `${n}`;
     
-                                if (popupContent.style.left === "38%") {
+                                if (popupContent.style.opacity === "1.1") {
                                     clearInterval(timer);
                                 }
     
-                            }, 1);
-                        }
-
-                    });
-                    popupCloseBtn.addEventListener('click', () => {
-                        if(window.innerWidth < 768){
-                            popup.style.display = 'none';
+                            }, 30);
+                            popup.style.display = 'block';
                         }else{
-                            popupContent.style.left = "38%";
-                            let n = 38;
+                            popup.style.display = 'block';
+                        }
+                    });
+                });
+                    popupCloseBtn.addEventListener('click', () => {
+                        if(window.innerWidth > 768){
+                            popupContent.style.opacity = "1";
+                            let n = 1;
                             const timer = setInterval(() => {
-                                n++;
-                                popupContent.style.left = `${n}%`;
+                                n-=0.1;
+                                popupContent.style.opacity = `${n}`;
     
-                                if (popupContent.style.left === "100%") {
+                                if (popupContent.style.opacity === "-0.1") {
                                     popup.style.display = 'none';
                                     clearInterval(timer);
                                 }
     
-                            }, 1);
+                            }, 30);
+                        }else{
+                            popup.style.display = 'none';
+                            
                         }
                         
                     });

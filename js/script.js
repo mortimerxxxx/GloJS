@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', function () {
+        window.addEventListener('DOMContentLoaded', function () {
             'use strict';
 
             //Timer
@@ -24,7 +24,6 @@ window.addEventListener('DOMContentLoaded', function () {
                 /* % 24, делим на колличество минут и секунд.
                 чтобы почитать посчиать дни, мы должны из часов получить остаток по делению на 24 часа
                 и переменную дней разделить на чекунды, минуты и на 24 часа
-
                 day = Math.floor(timeRemaining / 60 / 60 / 24); */
                 let updateClock = function () {
                     let timer = getTimeRemaining();
@@ -79,7 +78,7 @@ window.addEventListener('DOMContentLoaded', function () {
                     popupCloseBtn = document.querySelector('.popup-close');
                 let popupContent = document.querySelector('.popup-content');
 
-                  popupBtn.forEach((elem) => {
+                popupBtn.forEach((elem) => {
                     elem.addEventListener('click', () => {
                         if(window.innerWidth > 768){
                             popupContent.style.opacity = "0";
@@ -119,7 +118,6 @@ window.addEventListener('DOMContentLoaded', function () {
                         }
                         
                     });
-                }); 
-            };
-            togglePopUp();
-        });
+                }; 
+                togglePopUp();
+            });

@@ -56,9 +56,8 @@ window.addEventListener('DOMContentLoaded', function () {
             //menu
             const toggleMenu = () => {
 
-                const btnMenu = document.querySelector('.menu'),
-                    menu = document.querySelector('menu'),
-                    closeBtn = document.querySelector('.close-btn'),
+                 
+                const menu = document.querySelector('menu'),
                     menuItems = menu.querySelectorAll('ul>li>a'),
                     body = document.querySelector('body');
                 const handlerMenu = () => {
@@ -78,8 +77,6 @@ window.addEventListener('DOMContentLoaded', function () {
                     }
                 });
 
-                // btnMenu.addEventListener('click', handlerMenu);
-                // closeBtn.addEventListener('click', handlerMenu);
 
                 menuItems.forEach((elem) => elem.addEventListener('click', handlerMenu));
             };
@@ -145,18 +142,6 @@ window.addEventListener('DOMContentLoaded', function () {
                 });
             };
             togglePopUp();
-
-            //pageScrolling
-
-            const btnServiceBlock = document.querySelector("a[href='#service-block']");
-
-            // let serviceBlock = document.querySelector("#service-block");
-            // btnServiceBlock.addEventListener('click', () => {
-            //     const to = serviceBlock.getBoundingClientRect();
-            //     console.log(to.top + window.pageYOffset);
-            //     return to.top + window.pageYOffset;
-
-            // });
 
             //Tabs
 

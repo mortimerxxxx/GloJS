@@ -48,6 +48,7 @@ window.addEventListener('DOMContentLoaded', function () {
                         timerSeconds.textContent = '00';
                     }
                 };
+                updateClock();
                 setInterval(updateClock, 1000);
             }
             countTimer("7 november 2020");
@@ -72,7 +73,7 @@ window.addEventListener('DOMContentLoaded', function () {
                         handlerMenu();
                     }else if(target2.classList.contains('close-btn')){
                         handlerMenu();
-                    }else if(target2.matches('ul>li>a')){
+                    }else if(target2.contains('ul>li>a')){
                         handlerMenu();
                     }
                 });

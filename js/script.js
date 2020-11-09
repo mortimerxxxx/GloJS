@@ -276,4 +276,32 @@ window.addEventListener('DOMContentLoaded', function () {
 
             };
             slider();
+
+            // изменение картинки
+            
+            const changeImage = () => {
+                let imageSrc;
+
+                document.addEventListener('mouseout', event => {
+                    if(event.target.matches('.command__photo')){
+                        event.target.src = imageSrc;
+                    }
+                    });
+                document.addEventListener('mouseover', (event) => {
+                    if(event.target.matches('.command__photo')){
+                        imageSrc = event.target.src;
+                        event.target.src = event.target.dataset.img;                            
+                    }
+                });
+            };
+
+            changeImage();
+
+            //ввод только чисел в калькуляторе
+
+            document.addEventListener('input', (event) =>{
+                if(event.target.matches('.calc-item ')){
+                    event.target.value = event.target.value.replace(/\D/g, '');
+                }
+            });
         });

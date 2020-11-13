@@ -63,9 +63,11 @@ window.addEventListener('DOMContentLoaded', function () {
                     menu.classList.toggle('active-menu');
                 };
                 body.addEventListener('click', event => {
+                    
                     let target = event.target,
                         target2 = event.target;
                         target = target.closest('.menu');
+                        
                     if(target){
                         handlerMenu();
                     }else if(target2.classList.contains('close-btn')){
@@ -365,4 +367,122 @@ window.addEventListener('DOMContentLoaded', function () {
 
             };
             calc(100);
+
+
+            // отправка формы через ajax
+
+            const sendForm = () => {
+                
+                const errorMessage = 'Что-то пошло не так',
+                    loadMessage = `
+                    <div class="loadMessage"></div>
+                    `,
+                    sucessMessage = 'Спасибо! МЫ скоро свяжемся с вами';
+                
+                //получаем форму по id
+                // const form = document.getElementById('form1');
+
+                const form = document.querySelectorAll('form');
+                const input = document.querySelectorAll('input');
+                
+                for(let i = 0; i < form.length; i++) {
+                    form[i].addEventListener('submit', function (event) {
+                        
+                        //отменяем перезагрузку страницы
+                        event.preventDefault();
+                        //добавляем в форму наши сообщения
+                        this.appendChild(statusMessage);
+    
+                        //добавляем сообщение о загрузке данных
+                        statusMessage.innerHTML = loadMessage;
+    
+                        //получение данных
+                        /*создаем экземпляр класса formData */
+                        const formData = new FormData(this);
+                        
+                        /*отправка в JSON формате*/
+                        let body = {};
+                        
+                        /*for(let val of formData.entries()){
+                            //добавляем в body данные val
+                            body[val[0]] = val[1];
+                        }*/
+                        
+                        formData.forEach((val, key) => {
+                            body[key] = val;
+                        });
+                        //передаем body и callback функуию
+                        postData(body, () => {
+                            //выводим сообщение об успешной отправке
+                            statusMessage.textContent = sucessMessage;
+                            input.forEach((elem) => {
+                                elem.value = "";
+                                });
+                        }, 
+                        //создаем еще одну collback функцию для ошибки
+                        (error) => {
+                            //выводим сообщение об отправке с ошибкой
+                            statusMessage.textContent = errorMessage;
+                            console.log(error);
+                        });
+                        
+                    });
+                }
+
+                document.addEventListener('input', (event) => {
+                    let target = event.target;
+
+                    if(target.matches('.form-name') || target.matches('.mess') || target.matches('.top-form-name')){
+                        target.value = target.value.replace(/[^А-Яа-яЁе ]/gi, '');
+                    }
+                });
+
+                document.addEventListener('input', (event) => {
+                    let target = event.target;
+
+                    if(target.matches('.form-phone')){
+                        target.value = target.value.replace(/[^+0-9]/gi, "");
+                    }
+                });
+
+                //Добавление элемента на страницу в котором будут располгаться сообщения
+                const statusMessage = document.createElement('div');
+
+                statusMessage.style.cssText = 'font-size: 2rem; color:  #19b5fe';
+
+                //вешаем обработчик событий на форму
+
+                //прием callback функции outputData
+            const postData = (body, outputData, errorData) => {
+
+                //пишем запрос к серверу
+                const request = new XMLHttpRequest();
+
+                //отлавливаем событие отправки
+                request.addEventListener('readystatechange', () => {
+                    if(request.readyState !== 4) {
+                        return;
+                    }
+                    if(request.status === 200) {
+                        outputData();
+                    }else {
+                        errorData(request.status);
+                    }
+                });
+                
+                //настраиваем соединенеие
+                request.open('POST', './server.php');
+                
+                //настраиваем заголовки
+                request.setRequestHeader('Content-Type', 'application/json');
+                
+                //открываем соединение и передаем данные с помощью метода request
+                /*request.send(formData);*/
+                
+                //открываем соединение и передаем данные с помощью метода send в JSON формате
+                request.send(JSON.stringify(body));
+            };
+
+        };
+            sendForm();
         });

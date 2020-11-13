@@ -848,6 +848,8 @@ footer .web {
     color: #fff
 }
 
+
+
 @media (max-width:991px) {
     body {
         font-size: 1.5rem
@@ -1180,3 +1182,4 @@ footer .web {
         left: 5px
     }
 }
+

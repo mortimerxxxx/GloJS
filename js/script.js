@@ -408,7 +408,10 @@ window.addEventListener('DOMContentLoaded', function () {
                         });
                         //передаем body и callback функуию
                         postData(body)
-                            .then(() => {
+                            .then((response) => {
+                                if(response.status !== 200) {
+                                    throw new Error('status network not 200');
+                                }
                                 statusMessage.textContent = sucessMessage;
 
                                 setTimeout(() => {
@@ -421,11 +424,10 @@ window.addEventListener('DOMContentLoaded', function () {
                             })
                             .catch((error) => {
                                 statusMessage.textContent = errorMessage;
-                                console.log(error);
+                                console.error(error);
                             });
-                            //выводим сообщение об успешной отправке
 
-                        } 
+                        }
 
                     );
                 }
@@ -451,39 +453,16 @@ window.addEventListener('DOMContentLoaded', function () {
 
                 statusMessage.style.cssText = 'font-size: 2rem; color:  #19b5fe';
 
-                //вешаем обработчик событий на форму
-
-                //прием callback функции outputData
             const postData = (body) => {
 
-                return new Promise((resolve, reject) => {
-                    //пишем запрос к серверу
-                    const request = new XMLHttpRequest();
-
-                    //отлавливаем событие отправки
-                    request.addEventListener('readystatechange', () => {
-                        if(request.readyState !== 4) {
-                            return;
-                        }
-                        if(request.status === 200) {
-                            resolve();
-                        }else {
-                            reject(request.status);
-                        }
-                    });
-                    //настраиваем соединенеие
-                    request.open('POST', './server.php');
-
-                    //настраиваем заголовки
-                    request.setRequestHeader('Content-Type', 'application/json');
-
-                    //открываем соединение и передаем данные с помощью метода request
-                    /*request.send(formData);*/
-
-                    //открываем соединение и передаем данные с помощью метода send в JSON формате
-                    request.send(JSON.stringify(body));
+                return fetch('./server.php', {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(body)
                 });
-                
+
             };
 
         };

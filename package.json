@@ -1,0 +1,39 @@
+{
+  "name": "GloJS",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --mode=production && webpack serve --open Firefox.exe",
+    "build": "webpack --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mortimerxxxx/GloJS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mortimerxxxx/GloJS/issues"
+  },
+  "homepage": "https://github.com/mortimerxxxx/GloJS#readme",
+  "devDependencies": {
+    "@webpack-cli/serve": "^1.1.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.6.2",
+    "babel-loader": "^8.0.6",
+    "element-closest": "^3.0.2",
+    "fetch-polyfill": "^0.8.2",
+    "formdata-polyfill": "^3.0.20",
+    "nodelist-foreach-polyfill": "^1.2.0",
+    "path": "^0.12.7",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.8.1"
+  }
+
+}

@@ -63,17 +63,18 @@ const sendForm = () => {
         let target = event.target;
 
         if(target.matches('.form-name') || target.matches('.mess') || target.matches('.top-form-name')){
-            target.value = target.value.replace(/[^А-Яа-яЁе ]/gi, '');
+            target.value = target.value.replace(/[^А-Яа-яЁе \,\.\!\?]/gi, '');
         }
     });
 
-    document.addEventListener('input', (event) => {
-        let target = event.target;
+    // document.addEventListener('input', (event) => {
+    //     let target = event.target;
 
-        if(target.matches('.form-phone')){
-            target.value = target.value.replace(/[^+0-9]/gi, "");
-        }
-    });
+    //     if(target.matches('.form-phone')){
+    //         mask: '+{7}(000)000-00-00';
+    //         target.value = target.value.replace(/[^+0-9]/gi, "");
+    //     }
+    // });
 
     //Добавление элемента на страницу в котором будут располгаться сообщения
     const statusMessage = document.createElement('div');

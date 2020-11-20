@@ -1,6 +1,6 @@
 "use strict";
 
-function maskPhone(selector, masked = '+7 (___) ___-__-__') {
+function maskPhone(selector, masked = '+7 ___ ___-__-__') {
 	const elems = document.querySelectorAll(selector);
 
 	function mask(event) {
@@ -8,7 +8,6 @@ function maskPhone(selector, masked = '+7 (___) ___-__-__') {
 		const template = masked,
 			def = template.replace(/\D/g, ""),
 			val = this.value.replace(/\D/g, "");
-		console.log(template);
 		let i = 0,
 			newValue = template.replace(/[_\d]/g, function (a) {
 				return i < val.length ? val.charAt(i++) || def.charAt(i) : a;
@@ -22,10 +21,10 @@ function maskPhone(selector, masked = '+7 (___) ___-__-__') {
 				return "\\d{1," + a.length + "}";
 			}).replace(/[+()]/g, "\\$&");
 		reg = new RegExp("^" + reg + "$");
-		if (!reg.test(this.value) || this.value.length < 5 || keyCode > 47 && keyCode < 58) {
+		if (!reg.test(this.value) || this.value.length < 13 || keyCode > 47 && keyCode < 58) {
 			this.value = newValue;
 		}
-		if (event.type == "blur" && this.value.length < 5) {
+		if (event.type == "blur" && this.value.length < 13) {
 			this.value = "";
 		}
 

@@ -11,12 +11,34 @@ const sendForm = () => {
 
     const form = document.querySelectorAll('form');
     const input = document.querySelectorAll('input');
+    const popup = document.querySelector('.popup');
+    let checkEmail;
     
     for(let i = 0; i < form.length; i++) {
         form[i].addEventListener('submit', function (event) {
             
             //отменяем перезагрузку страницы
             event.preventDefault();
+
+            if(form[i]){
+                let formi = i+1;
+                checkEmail = `form${formi}-email`;
+            }
+            const reg = /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/;
+            const address = document.getElementById(checkEmail).value;
+            if (reg.test(address) === false) {
+                alert("Введите корректный e-mail");
+                return;
+            }
+            // document.addEventListener('input', (event) => {
+            //     let target = event.target;
+            //     if(target.matches('.form-email')){
+            //         // target.value = target.value.replace(/(\W)@/gi, '');
+            //         target.value = target.value.replace(/^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{3,4})$/gi, '');
+            //     }
+            // });
+            
+
             //добавляем в форму наши сообщения
             this.appendChild(statusMessage);
 
@@ -44,6 +66,10 @@ const sendForm = () => {
                     setTimeout(() => {
                         statusMessage.textContent = '';
                     },1000);
+
+                    setTimeout(() => {
+                        popup.style.display = 'none';
+                    },3000);
                     
                     input.forEach((elem) => {
                         elem.value = "";
@@ -56,6 +82,8 @@ const sendForm = () => {
 
             }
 
+
+
         );
     }
 
@@ -66,6 +94,8 @@ const sendForm = () => {
             target.value = target.value.replace(/[^А-Яа-яЁе \,\.\!\?]/gi, '');
         }
     });
+
+
 
     // document.addEventListener('input', (event) => {
     //     let target = event.target;

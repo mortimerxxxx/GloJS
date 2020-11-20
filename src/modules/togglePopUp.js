@@ -28,6 +28,10 @@ const togglePopUp = () => {
 
     popup.addEventListener('click', (event) => {
         let target = event.target;
+        const formName = document.getElementById('form3-name'),
+            formPhone = document.getElementById('form3-phone'),
+            formEmail = document.getElementById('form3-email');
+        
 
         if(target.classList.contains('popup-close')){
             if(window.innerWidth > 768){
@@ -38,6 +42,9 @@ const togglePopUp = () => {
                     popupContent.style.opacity = `${n}`;
 
                     if (popupContent.style.opacity === "-0.1") {
+                        formName.value = '';
+                        formPhone.value = '';
+                        formEmail.value = '';
                         popup.style.display = 'none';
                         clearInterval(timer);
                     }

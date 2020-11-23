@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>exchangeOffice</title>
+
+    <link rel="stylesheet" href="style/style.css" />
+    <script src="plugins/index.js" defer></script>
+  </head>
+  <body>
+    <div id="center">
+      <div class="header">
+        Вас приветствует валютная касса
+        <span class="color">"Между мирами"</span>
+      </div>
+      <div class="equalization-text">1 EUR</div>
+      <div class="exchange">
+        <div class="exch-left">
+          <div class="row"><input type="text" class="convert-from" /></div>
+          <div class="row">
+            <button class="left-btn currency-usd-left">USD</button>
+            <button class="left-btn currency-eur-left">EUR</button>
+            <button class="left-btn currency-rub-left">RUB</button>
+          </div>
+        </div>
+        <div class="exch-right">
+        <div class="row"><input type="text" class="convert-to" /></div>
+        <div class="row">
+          <button class="right-btn currency-usd-right">USD</button>
+          <button class="right-btn currency-eur-right">EUR</button>
+          <button class="right-btn currency-rub-right">RUB</button>
+        </div>
+      </div> 
+      <div class="row"><button class="convert">Конвертировать</button></div>     
+    </div>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+body {
+  background: #444444;
+  color: snow;
+  text-align: center;
+  font-size: 20px;
+}
+
+.x-block {
+  
+  margin: 40px auto;
+  font-size: 30px;
+  width: 900px;    
+  display: block;
+}
+
+.reality {
+  padding: 30px;
+  margin: 30px;
+  font-size: 40px;
+  font-weight: 700;
+  color: rgb(99, 243, 99);
+}

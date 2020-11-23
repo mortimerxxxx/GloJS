@@ -5,6 +5,7 @@ import elementClosest from 'element-closest';
 elementClosest(window);
 import 'formdata-polyfill';
 import 'fetch-polyfill';
+import partners from './modules/partners';
 
 import maskPhone from './modules/maskPhone';
 import countTimer from './modules/countTimer';
@@ -33,3 +34,5 @@ changeImage();
 calc(100);
 
 sendForm();
+
+partners();
